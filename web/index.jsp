@@ -87,7 +87,10 @@
                                 <ul class="dropdown-menu">
                                     <li><a class="dropdown-item" href="PAGINASERVICIOS.html">Clínicos</a></li>
                                     <li><a class="dropdown-item" href="estetica.html">Estética Canina</a></li>
-                                    <li><a class="dropdown-item" href="ProductoVista.php">Petshop</a></li>
+                                    
+                                    <li><a class="dropdown-item" href="ProductoController?accion=home" >Petshop</a></li>
+                           
+                                    <%-- <li><a class="dropdown-item" href="ProductoVista.php">Petshop</a></li> --%>
                                 </ul>
                             </li>
                             <a class="nav-link" href="cita.php">Contáctanos</a>
@@ -102,15 +105,9 @@
                         </div>
                     </div>
                 </div>
-
             </nav>
-
         </div>
-
-
     </div>
-
-
     <!--FIN NAV BAR O MENÚ-->
 
     <!-- IMAGEN INICIO ( SLIDER ) -->

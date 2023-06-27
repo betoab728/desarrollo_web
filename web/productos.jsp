@@ -100,7 +100,7 @@
                         <td><%=producto.getDescripcion() %></td>
                         <td><%=producto.getPrecio() %></td>
                         <td><%=producto.getDescuento() %></td>
-                        <td>  <img src="${pageContext.request.contextPath}/vistas/IMG/<%=producto.getImagen()%>"style="width: 100px;" alt="imagen producto"></td>
+                        <td> <img src="${pageContext.request.contextPath}/vistas/IMG/<%=producto.getImagen()%>"style="width: 100px;" alt="imagen producto"></td>
                        
                         <td> 
                             <a href="../ProductoController?accion=editar&id=<%= producto.getIdproducto() %>" class="btn btn-success" ><i class="fas fa-edit"></i></a>

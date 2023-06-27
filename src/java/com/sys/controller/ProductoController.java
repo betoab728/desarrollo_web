@@ -5,8 +5,11 @@
  */
 package com.sys.controller;
 
+import com.sys.model.Producto;
+import com.sys.pruebadao.ProductosDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -20,6 +23,13 @@ import javax.servlet.http.HttpServletResponse;
 public class ProductoController extends HttpServlet {
 
      String listar="vistas/productos.jsp";
+     
+     String listado="vistas/ListadoProductos.jsp";
+     
+     ProductosDAO dao=new ProductosDAO();
+                    
+     ArrayList<Producto>list=new ArrayList<>();
+     
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -31,6 +41,23 @@ public class ProductoController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        String accion=request.getParameter("accion");
+        list=dao.Listar();
+        
+        switch(accion){
+        
+            case "dejemplo":
+                break;
+                
+            default:
+                request.setAttribute("productos", list);
+                request.getRequestDispatcher("ListadoProductos.jsp").forward(request, response);
+                
+        
+        }
+        
+        
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
@@ -63,9 +90,11 @@ public class ProductoController extends HttpServlet {
           
           System.out.println("en el controlador");
           
-         if (action.equalsIgnoreCase("listar")){
+        if (action.equalsIgnoreCase("listar")){
             acceso=listar;
-        } 
+        } else if (action.equalsIgnoreCase("Listado")){
+            acceso=listado;
+        }
         
         RequestDispatcher vista=request.getRequestDispatcher(acceso);
         vista.forward(request, response); 
