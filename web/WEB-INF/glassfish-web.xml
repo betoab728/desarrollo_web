@@ -1,0 +1,18 @@
+<!DOCTYPE glassfish-web-app PUBLIC "-//GlassFish.org//DTD GlassFish Application Server 3.1 Servlet 3.0//EN" "http://glassfish.org/dtds/glassfish-web-app_3_0-1.dtd">
+<glassfish-web-app>
+  <!-- Configuración adicional del servidor -->
+  <property name="directory-listing-enabled" value="true"/>
+  
+  <!-- Configuración de recursos -->
+  <resource-ref>
+    <res-ref-name>jdbc/myDataSource</res-ref-name>
+    <res-type>javax.sql.DataSource</res-type>
+    <res-auth>Container</res-auth>
+  </resource-ref>
+  
+  <!-- Mapeo de recursos -->
+  <security-role-mapping>
+    <role-name>admin</role-name>
+    <group-name>Admin</group-name>
+  </security-role-mapping>
+</glassfish-web-app>
