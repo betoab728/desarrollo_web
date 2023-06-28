@@ -107,10 +107,9 @@
                             <div class="card-header">
                                 <label>${p.getDescripcion()}</label>
                             </div>
-                            <div class="card-body">
+                            <div class="card-body text-center">
                                
-                                <img src="" width="100" />
-                                 <img src="${pageContext.request.contextPath}/vistas/IMG/${p.getImagen()} "style="width: 100px;" alt="imagen producto">
+                                <img class="text-center" src="${pageContext.request.contextPath}/vistas/IMG/${p.getImagen()} "style="width: 100px;" alt="imagen producto">
                             </div>
                             <div class="card-footer text-center">
                                 <label>${p.getPrecio()}</label>
