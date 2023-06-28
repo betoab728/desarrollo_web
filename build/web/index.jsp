@@ -88,7 +88,7 @@
                                     <li><a class="dropdown-item" href="PAGINASERVICIOS.html">Clínicos</a></li>
                                     <li><a class="dropdown-item" href="estetica.html">Estética Canina</a></li>
                                     
-                                    <li><a class="dropdown-item" href="ProductoController?accion=home" >Petshop</a></li>
+                                    <li><a class="dropdown-item" href="ProductoController?accion=ListarProd" >Petshop</a></li>
                            
                                     <%-- <li><a class="dropdown-item" href="ProductoVista.php">Petshop</a></li> --%>
                                 </ul>

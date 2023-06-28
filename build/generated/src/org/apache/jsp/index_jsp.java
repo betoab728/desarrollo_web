@@ -127,7 +127,7 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                                    <li><a class=\"dropdown-item\" href=\"PAGINASERVICIOS.html\">Clínicos</a></li>\r\n");
       out.write("                                    <li><a class=\"dropdown-item\" href=\"estetica.html\">Estética Canina</a></li>\r\n");
       out.write("                                    \r\n");
-      out.write("                                    <li><a class=\"dropdown-item\" href=\"ProductoController?accion=home\" >Petshop</a></li>\r\n");
+      out.write("                                    <li><a class=\"dropdown-item\" href=\"ProductoController?accion=ListarProd\" >Petshop</a></li>\r\n");
       out.write("                           \r\n");
       out.write("                                    ");
       out.write("\r\n");

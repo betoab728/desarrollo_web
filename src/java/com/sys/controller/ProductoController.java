@@ -42,20 +42,7 @@ public class ProductoController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        String accion=request.getParameter("accion");
-        list=dao.Listar();
-        
-        switch(accion){
-        
-            case "dejemplo":
-                break;
-                
-            default:
-                request.setAttribute("productos", list);
-                request.getRequestDispatcher("ListadoProductos.jsp").forward(request, response);
-                
-        
-        }
+     
         
         
         response.setContentType("text/html;charset=UTF-8");
@@ -94,6 +81,16 @@ public class ProductoController extends HttpServlet {
             acceso=listar;
         } else if (action.equalsIgnoreCase("Listado")){
             acceso=listado;
+        } else if (action.equalsIgnoreCase("ListarProd")){
+            
+            ProductosDAO db=new ProductosDAO();
+            ArrayList<Producto> productos=new ArrayList<>();
+            
+            productos=db.Listar();
+            
+            acceso=listado;
+            
+            request.setAttribute("productos", productos);
         }
         
         RequestDispatcher vista=request.getRequestDispatcher(acceso);

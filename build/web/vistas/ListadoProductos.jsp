@@ -19,7 +19,7 @@
             <div class="row">
                 
                 <c:forEach var="p" items="${productos}">
-                     <div class="col-sm-4">
+                       <div class="col-sm-4">
                         <div class="card">
                             <div class="card-header">
                                 <label>${p.getDescripcion()}</label>
@@ -29,7 +29,7 @@
                                 <img src="" width="100" />
                             </div>
                             <div class="card-footer text-center">
-                                <label>Descripcion</label>
+                                <label>${p.getPrecio()}</label>
                                 <div>
                                     <a href="#" class="btn btn-outline-info">Agregar al carrito</a>
                                 </div>
@@ -38,6 +38,8 @@
                         </div>
                     </div>
                 </c:forEach>
+                
+              
                 
              
             </div>
