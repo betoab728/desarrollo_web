@@ -5,13 +5,16 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Petshop</title>
+      
          <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+          <link rel="stylesheet" href="css/carrito.css">
         <!-- ICÓNOS CSS -->
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
         <!-- iconos -->
         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+        <script src="https://kit.fontawesome.com/73f851add2.js" crossorigin="anonymous"></script>
 
     </head>
     <body>
@@ -46,7 +49,6 @@
         </div>
     </div>
     <!-- TOPBAR FINAL -->
-
 
     <!--NAV BAR O MENÚ-->
 
@@ -83,10 +85,28 @@
                             <a class="nav-link" href="cita.php">Contáctanos</a>
                         </div>
                     </div>
+                        <form class="d-flex">
+                            <input class="form-control me-2" type="search" placeholder="Producto" aria-label="Search">
+                            <button class="btn btn-outline-success" type="submit">Buscar</button>
+                        </form>
+                        <ul class="navbar-nav m-2">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                   Iniciar Sesion
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                   <li><a class="dropdown-item" href="#">Action</a></li>
+                                   <li><a class="dropdown-item" href="#">Another action</a></li>
+                                   <li><hr class="dropdown-divider"></li>
+                                   <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                </ul>
+                            </li>
+                       </ul>
+                                    
                     <div class="row">
                         <div class="col-1">
                             <div class="counter-container">
-                                <span id="counter">0</span>
+                                <span id="counter">${contador}</span>
                                 <i class="fa-sharp fa-solid fa-cart-shopping" style="font-size: 22px;"></i>
                             </div>
                         </div>
@@ -97,13 +117,12 @@
     </div>
     <!--FIN NAV BAR O MENÚ-->
 
-        
         <div class="container mt-2">
             <div class="row">
                 
                 <c:forEach var="p" items="${productos}">
                        <div class="col-sm-4">
-                        <div class="card">
+                        <div class="card mt-3">
                             <div class="card-header">
                                 <label>${p.getDescripcion()}</label>
                             </div>
@@ -114,7 +133,9 @@
                             <div class="card-footer text-center">
                                 <label>${p.getPrecio()}</label>
                                 <div>
-                                    <a href="#" class="btn btn-outline-info">Agregar al carrito</a>
+                                    <a href="ProductoController?accion=AgregarCarrito&id=${p.getIdproducto()}"
+                                       class="btn btn-outline-info btncarrito" style="" 
+                                       >Agregar al carrito</a>
                                 </div>
 
                             </div>
@@ -122,9 +143,6 @@
                     </div>
                 </c:forEach>
                 
-              
-                
-             
             </div>
         </div>
      <!--FOOTER INICIO -->
@@ -176,6 +194,10 @@
         </div>
      </section>
     <!-- FOOTER FINAL -->
-   
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+        crossorigin="anonymous"></script>
+    <script type="text/javascript" src="js/slider.js"></script>
+
     </body>
 </html>

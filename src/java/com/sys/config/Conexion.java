@@ -18,7 +18,7 @@ import java.sql.DriverManager;
     private static final String db="allqvet";
     private static final String url="jdbc:mysql://localhost:3306/"+db;
     private static final String user="root";
-    private static final  String pass="";
+    private static final  String pass="root";
  
     public Conexion() {
         try {

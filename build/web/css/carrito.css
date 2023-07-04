@@ -1,0 +1,71 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 04/07/2023, 03:43:27 PM
+    Author     : ELIAS
+*/
+
+
+
+body{
+	font-family: arial,helvetica;
+}
+
+
+/*cart*/
+
+
+.counter-container{
+    
+    width: 3.3rem;
+    height: 3.3rem;
+    margin-right: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+   
+}
+
+.counter-container span{
+    user-select: none;
+    position: absolute;
+    background: #957596;;
+    width: 1.3rem;
+    height: 1.3rem;
+    font-size: .8rem;
+    border-radius: 50%;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: .2rem;
+    right: .3rem;
+    
+}
+.icon-cart{
+    text-decoration: none;
+    color: #000;
+
+}
+.icon-cart:hover{
+    color: #000;
+}
+
+
+
+.btncarrito{
+    border-color: #5f3061;
+    color: #5f3061;
+ 
+}
+
+.btncarrito:hover {
+     background-color: #5f3061;
+      color: red;
+}
+
+/*tabla resumen de pedido*/

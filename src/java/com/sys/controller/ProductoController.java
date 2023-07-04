@@ -5,6 +5,7 @@
  */
 package com.sys.controller;
 
+import com.sys.model.Carrito;
 import com.sys.model.Producto;
 import com.sys.pruebadao.ProductosDAO;
 import java.io.IOException;
@@ -29,6 +30,9 @@ public class ProductoController extends HttpServlet {
      ProductosDAO dao=new ProductosDAO();
                     
      ArrayList<Producto>list=new ArrayList<>();
+     
+       int item =0;
+        ArrayList<Carrito> listaCarrito =new ArrayList<>();
      
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -91,6 +95,40 @@ public class ProductoController extends HttpServlet {
             acceso=listado;
             
             request.setAttribute("productos", productos);
+            
+        } else if (action.equalsIgnoreCase("AgregarCarrito")){
+            
+            int idproducto=Integer.parseInt(request.getParameter("id"));
+                
+              Producto producto=new Producto();
+              ProductosDAO db=new ProductosDAO();
+              producto=db.ListarId(idproducto);
+              
+             
+            
+              double totalPagar=0.0;
+              int cantidad =1;
+              
+              item+=1;
+              
+              Carrito carrito=new Carrito();
+              carrito.setItem(item);
+              carrito.setIdproducto(producto.getIdproducto());
+              carrito.setNombre(producto.getDescripcion());
+              carrito.setPrecioCompra(producto.getPrecio());
+              carrito.setCantidad(cantidad);
+              carrito.setSubtotal(cantidad * producto.getPrecio() );
+              
+              listaCarrito.add(carrito);
+              
+              request.setAttribute("contador", listaCarrito.size());
+              
+             // acceso="ProductoController?accion=ListarProd";
+             
+             acceso="ProductoController?accion=ListarProd";
+            
+        } else if (action.equalsIgnoreCase("Carrito")){
+            
         }
         
         RequestDispatcher vista=request.getRequestDispatcher(acceso);

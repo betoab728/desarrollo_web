@@ -52,6 +52,32 @@ public class ProductosDAO implements IProducto {
        return list;
         
     }
+     @Override
+    public Producto ListarId(int id){
+        
+        String sql="select * from productos where idproducto="+id;
+        Producto producto=new Producto();
+        
+        try {
+              con=cn.getConnection();
+              PreparedStatement  pst=con.prepareStatement(sql);
+               ResultSet rs=pst.executeQuery();
+               
+                 while(rs.next()){
+
+                    producto.setIdproducto(rs.getInt("idproducto"));
+                    producto.setDescripcion(rs.getString("descripcion"));
+                    producto.setPrecio(rs.getDouble("precio"));
+                    producto.setDescuento(rs.getDouble("descuento"));
+                    producto.setImagen(rs.getString("imagen"));
+                 }
+              
+        } catch (Exception e) {
+              System.out.println("Error en modulo productodao:" +e.toString());
+        }
+        
+        return producto;
+    }
 
     @Override
     public Producto Listar(int id) {

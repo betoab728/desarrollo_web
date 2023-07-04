@@ -21,6 +21,7 @@ public interface IProducto {
     public int Agregar(Producto producto);
     public int Eliminar(int id);
     public List Buscar(String descripcion);
+    public Producto ListarId(int id);
     
     
 }
