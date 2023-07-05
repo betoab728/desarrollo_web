@@ -3,14 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/ELIAS/Documents/NetBeansProjects/allqovet_webapp_AVANCE1/web/css/estilos.css</file>
-            <file>file:/C:/Users/ELIAS/Documents/NetBeansProjects/allqovet_webapp_AVANCE1/web/css/carrito.css</file>
-            <file>file:/C:/Users/ELIAS/Documents/NetBeansProjects/allqovet_webapp_AVANCE1/src/java/com/sys/model/Carrito.java</file>
-            <file>file:/C:/Users/ELIAS/Documents/NetBeansProjects/allqovet_webapp_AVANCE1/src/java/com/sys/controller/ProductoController.java</file>
-            <file>file:/C:/Users/ELIAS/Documents/NetBeansProjects/allqovet_webapp_AVANCE1/web/vistas/ListadoProductos.jsp</file>
-            <file>file:/C:/Users/ELIAS/Documents/NetBeansProjects/allqovet_webapp_AVANCE1/web/index.jsp</file>
-            <file>file:/C:/Users/ELIAS/Documents/NetBeansProjects/allqovet_webapp_AVANCE1/src/java/com/sys/pruebadao/ProductosDAO.java</file>
-            <file>file:/C:/Users/ELIAS/Documents/NetBeansProjects/allqovet_webapp_AVANCE1/src/java/com/sys/config/Conexion.java</file>
+            <file>file:/C:/Users/Marcos/Documents/NetBeansProjects/desarrollo_web/web/index.jsp</file>
+            <file>file:/C:/Users/Marcos/Documents/NetBeansProjects/desarrollo_web/web/vistas/carrito.jsp</file>
+            <file>file:/C:/Users/Marcos/Documents/NetBeansProjects/desarrollo_web/web/vistas/ListadoProductos.jsp</file>
+            <file>file:/C:/Users/Marcos/Documents/NetBeansProjects/desarrollo_web/src/java/com/sys/controller/ProductoController.java</file>
         </group>
     </open-files>
 </project-private>

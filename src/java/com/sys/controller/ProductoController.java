@@ -24,6 +24,7 @@ import javax.servlet.http.HttpServletResponse;
 public class ProductoController extends HttpServlet {
 
      String listar="vistas/productos.jsp";
+     String listarCarrito="vistas/carrito.jsp";
      
      String listado="vistas/ListadoProductos.jsp";
      
@@ -104,8 +105,6 @@ public class ProductoController extends HttpServlet {
               ProductosDAO db=new ProductosDAO();
               producto=db.ListarId(idproducto);
               
-             
-            
               double totalPagar=0.0;
               int cantidad =1;
               
@@ -127,8 +126,12 @@ public class ProductoController extends HttpServlet {
              
              acceso="ProductoController?accion=ListarProd";
             
-        } else if (action.equalsIgnoreCase("Carrito")){
+        } else if (action.equalsIgnoreCase("MostrarCarrito")){
             
+            
+            System.out.println("entra a mostrar carrito");
+            
+             acceso=listarCarrito;            
         }
         
         RequestDispatcher vista=request.getRequestDispatcher(acceso);

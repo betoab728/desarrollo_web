@@ -106,8 +106,10 @@
                     <div class="row">
                         <div class="col-1">
                             <div class="counter-container">
-                                <span id="counter">${contador}</span>
-                                <i class="fa-sharp fa-solid fa-cart-shopping" style="font-size: 22px;"></i>
+                                <a class="nav-link" href="ProductoController?accion=MostrarCarrito">
+                                     <span id="counter"> ${contador}</span>
+                                     <i class="fa-sharp fa-solid fa-cart-shopping" style="font-size: 22px;"></i>
+                                </a>
                             </div>
                         </div>
                     </div>
