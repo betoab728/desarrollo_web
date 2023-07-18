@@ -18,6 +18,7 @@ public class Carrito {
     double precioCompra;
     int cantidad;
     double subtotal;
+    String imagen;
 
     public Carrito() {
     }
@@ -76,6 +77,13 @@ public class Carrito {
 
     public void setSubtotal(double subtotal) {
         this.subtotal = subtotal;
+    }
+      public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
     }
     
     

@@ -6,11 +6,18 @@
 package com.sys.controller;
 
 import com.sys.model.Carrito;
+import com.sys.model.Cliente;
+import com.sys.model.Compra;
+import com.sys.model.Fecha;
+import com.sys.model.Pago;
 import com.sys.model.Producto;
+import com.sys.pruebadao.CompraDAO;
 import com.sys.pruebadao.ProductosDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -26,6 +33,8 @@ public class ProductoController extends HttpServlet {
      String listar="vistas/productos.jsp";
      String listarCarrito="vistas/carrito.jsp";
      
+     String compraexitosa="vistas/compraexitosa.jsp";
+     
      String listado="vistas/ListadoProductos.jsp";
      
      ProductosDAO dao=new ProductosDAO();
@@ -34,7 +43,7 @@ public class ProductoController extends HttpServlet {
      
        int item =0;
         ArrayList<Carrito> listaCarrito =new ArrayList<>();
-     
+       double totalpagar=0;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -80,7 +89,7 @@ public class ProductoController extends HttpServlet {
           String acceso="";
           String action=request.getParameter("accion");
           
-          System.out.println("en el controlador");
+         System.out.println("en el contrl");
           
         if (action.equalsIgnoreCase("listar")){
             acceso=listar;
@@ -94,7 +103,7 @@ public class ProductoController extends HttpServlet {
             productos=db.Listar();
             
             acceso=listado;
-            
+            request.setAttribute("contador", listaCarrito.size());
             request.setAttribute("productos", productos);
             
         } else if (action.equalsIgnoreCase("AgregarCarrito")){
@@ -117,6 +126,7 @@ public class ProductoController extends HttpServlet {
               carrito.setPrecioCompra(producto.getPrecio());
               carrito.setCantidad(cantidad);
               carrito.setSubtotal(cantidad * producto.getPrecio() );
+               carrito.setImagen(producto.getImagen());
               
               listaCarrito.add(carrito);
               
@@ -128,11 +138,60 @@ public class ProductoController extends HttpServlet {
             
         } else if (action.equalsIgnoreCase("MostrarCarrito")){
             
+              
+                for (int i = 0; i < listaCarrito.size(); i++) {
+                totalpagar+=listaCarrito.get(i).getSubtotal();
+            }
+                request.setAttribute("contador", listaCarrito.size());
+                request.setAttribute("totalPagar", totalpagar);
+                request.setAttribute("carrito", listaCarrito);
+           
+             acceso=listarCarrito;        
+             
+             System.out.println(" en mostrar carrt");
+        } else if (action.equalsIgnoreCase("Delete")){
             
-            System.out.println("entra a mostrar carrito");
+            System.out.println("entro a delete");
             
-             acceso=listarCarrito;            
-        }
+           int idproducto=Integer.parseInt(request.getParameter("idp"));
+           
+            for (int i = 0; i < listaCarrito.size(); i++) {
+                if (listaCarrito.get(i).getIdproducto()==idproducto) 
+                    listaCarrito.remove(i);
+            }
+                
+            
+           
+        } else if (action.equalsIgnoreCase("GenerarCompra")){
+            
+            System.out.println("genera compra");
+            
+                double totalpagar=0;
+                for (int i = 0; i < listaCarrito.size(); i++) {
+                totalpagar+=listaCarrito.get(i).getSubtotal();
+                  }
+                
+                Cliente cliente=new Cliente();
+                cliente.setIdcliente(1);
+                
+                CompraDAO compradb=new CompraDAO();
+                
+                Compra compra=new Compra();
+                //cliente,1,Fecha.FechaBD(),totalpagar,"pendiente",listaCarrito
+              //   public Compra(Cliente cliente, int idpago, String fecha, double monto, String estado, List<Carrito> detallecompra) {
+               compra.setCliente(cliente);
+               compra.setIdpago(1);
+               compra.setFecha(Fecha.FechaBD());
+               compra.setMonto(totalpagar);
+               compra.setDetallecompra(listaCarrito);
+               
+               int res=compradb.Agregar(compra);
+               
+                    if (res!=0) {
+                         acceso=compraexitosa; 
+                    }
+                
+          } 
         
         RequestDispatcher vista=request.getRequestDispatcher(acceso);
         vista.forward(request, response); 

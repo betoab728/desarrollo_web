@@ -4,6 +4,7 @@
     Author     : Marcos
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -22,14 +23,16 @@
     <!-- iconos -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
+            <script>
+                                
+                </script>  
     </head>
     <body>
         
       
     <!-- TOPBAR INICIO-->
     <div class="container-fluid py-2 border-bottom d-none d-lg-block">
-        <div class="container">
-            <div class="row">
+          <div class="row">
                 <div class="col-md-6 text-center text-lg-start mb-2 mb-lg-0">
                     <div class="d-inline-flex align-items-center">
                         <a class="text-decoration-none text-body pe-3" href=""><i
@@ -56,8 +59,7 @@
         </div>
     </div>
     <!-- TOPBAR FINAL -->
-    
-     <!--NAV BAR O MENÚ-->
+        <!--NAV BAR O MENÚ-->
 
     <div class="row">
         <div class="col-md-11">
@@ -95,7 +97,7 @@
                     <div class="row">
                         <div class="col-1">
                             <div class="counter-container">
-                                <span id="counter">0</span>
+                                <span id="counter">${contador}</span>
                                 <i class="fa-sharp fa-solid fa-cart-shopping" style="font-size: 22px;"></i>
                             </div>
                         </div>
@@ -105,12 +107,75 @@
         </div>
     </div>
     <!--FIN NAV BAR O MENÚ-->
-      
-    <h1 class="text-center">Productos en su compra</h1>
+        <div class="container mt-4">
+            <h2 class="text-center">Resumen de su pedido</h2>
+            <div class="row">
+                <div class="col-sm-8">
+                    <table class="table table-hover">
+                         <thead>
+                            <tr>
+                              <th>ITEM</th>
+                              <th>NOMBRES</th>
+                              <th>DESCRIPCION</th>
+                              <th>PRECIO</th>
+                               <th>CANT</th>
+                               <th>SUBTOTAL</th>
+                            </tr>
+                        </thead>
+                         <tbody>
+                             <c:forEach var="car" items="${carrito}">
+                                <tr>
+                                    <td>${car.getItem()}</td>
+                                    <td>${car.getNombre()}</td>
+                                    <td>${car.getDescripcion()}
+                                        <img src="${pageContext.request.contextPath}/vistas/IMG/${car.getImagen()} "style="width: 100px;" alt="imagen producto">
+                                     </td>
+                                    <td >${car.getPrecioCompra()}</td>
+                                    <td>${car.getCantidad()}</td>
+                                    <td>${car.getSubtotal()}</td>
+                                    <td>
+                                        <input type="hidden" id="idp" value="${car.getIdproducto()}">
+                                        <a href="#" id="btnDelete">Eliminar</a>
+                                    </td>
+                                </tr>
+                             </c:forEach>
+                           
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-sm-4">
+                    <div class="card">
+                          <div class="card-header">
+                              <h3 class="text-center">Generar compra</h3>
+                          </div>
+                          <div class="card-body">
+                            <label>Subtotal</label>
+                            <input type="text" value="S/.${totalPagar}0" readonly="" class="form-control">
+                            <label>Descuento</label>
+                            <input type="text" value="S/.0.00" readonly="" class="form-control">
+                            <label>Total a pagar</label>
+                            <input type="text"  value="S/.${totalPagar}0" readonly="" class="form-control">
+                          </div>
+                           <div class="card-footer">
+                              
+                                <a href="ProductoController?accion=GenerarCompra" class="btn btn-danger btn-block">Generar compra</a>
+                                
+                                
+                          </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+                                    
+                          
+         
+        <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>  
         
-    <div clas="">
-        
-    </div>
-    
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+        crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script src="js/funciones.js" type="text/javascript"></script> 
     </body>
 </html>
